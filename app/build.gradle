@@ -1,0 +1,63 @@
+// Build configuration for the project
+buildscript {
+    repositories {
+        mavenCentral() // Main repository for dependencies
+    }
+    dependencies {
+        classpath 'org.jooq:jooq-codegen:3.19.15' // JOOQ code generation
+        classpath 'org.postgresql:postgresql:42.5.4' // PostgreSQL driver
+    }
+}
+
+plugins {
+    id 'org.springframework.boot' version '2.7.7' // Spring Boot plugin
+    id 'io.spring.dependency-management' version '1.1.2'
+    id 'java'
+    id 'application'
+}
+
+repositories {
+    mavenCentral() // Repository for fetching dependencies
+}
+
+dependencies {
+    // Spring Boot dependencies for web and JPA (if needed for future enhancements)
+    implementation 'org.springframework.boot:spring-boot-starter-web:2.7.7'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.7.7'
+
+    // Thymeleaf (if required in web projects)
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+
+    // JOOQ for type-safe SQL query building and schema management
+    implementation 'org.jooq:jooq:3.19.15'
+    implementation 'org.jooq:jooq-meta:3.19.15'
+    implementation 'org.jooq:jooq-codegen:3.19.15'
+
+    // PostgreSQL driver for database interaction
+    implementation 'org.postgresql:postgresql:42.6.0'
+
+    // Google Gson for JSON parsing
+    implementation 'com.google.code.gson:gson:2.10.1'
+
+    // HikariCP for database connection pooling
+    implementation 'com.zaxxer:HikariCP:5.0.1'
+
+    // OpenAI SDK
+    implementation "io.github.stefanbratanov:jvm-openai:0.11.0"
+
+    // Testing dependencies
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+
+
+
+}
+
+application {
+    mainClass = 'org.ChatUI.Main'// Main application class
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17 // Set Java version
+    targetCompatibility = JavaVersion.VERSION_17
+}
